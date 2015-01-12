@@ -27,3 +27,6 @@ Bugfix for tax calculation with empty cart
 
 1.2.5
 Bugfix for tax calculation for backend created orders
+
+1.2.6
+Bugfix for total calculation in case of switch to another payment method during checkout

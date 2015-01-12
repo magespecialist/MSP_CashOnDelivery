@@ -51,6 +51,20 @@ class MSP_CashOnDelivery_Model_Quote_Total extends Mage_Sales_Model_Quote_Addres
 			$quote->setMspCashondeliveryInclTax($amountInclTax);
 			$quote->setMspBaseCashondeliveryInclTax($baseAmountInclTax);
 		}
+		elseif($_helper->getQuote()->getPayment()->getMethod() != $_model->getCode()) {
+					$address->setGrandTotal(0);
+					$address->setBaseGrandTotal(0);
+		
+					$address->setMspCashondelivery(0);
+					$address->setMspBaseCashondelivery(0);
+					$address->setMspCashondeliveryInclTax(0);
+					$address->setMspBaseCashondeliveryInclTax(0);
+					$quote->setMspCashondelivery(0);
+					$quote->setMspBaseCashondelivery(0);
+					$quote->setMspCashondeliveryInclTax(0);
+					$quote->setMspBaseCashondeliveryInclTax(0);
+		
+				}
 
 		return $this;
 	}
@@ -61,13 +75,16 @@ class MSP_CashOnDelivery_Model_Quote_Total extends Mage_Sales_Model_Quote_Addres
 		if (!$_helper->getSession()->getQuoteId()) return $this;
 		
 		parent::fetch($address);
+
+		if ($address->getAddressType() != Mage_Sales_Model_Quote_Address::TYPE_SHIPPING)
+			return $this;
+
 		$_model = Mage::getModel('msp_cashondelivery/cashondelivery');
 		
 		$amount = $_model->getExtraFeeForTotal();
-	    if ($amount > 0 &&
-			($_helper->getQuote()->getPayment()->getMethod() == $_model->getCode()) &&
-			($address->getAddressType() == Mage_Sales_Model_Quote_Address::TYPE_SHIPPING)
-		) {
+
+		if ($amount > 0 && $_helper->getQuote()->getPayment()->getMethod() == $_model->getCode())
+		{
 	        $address->addTotal(array(
 	            'code'  => $_model->getCode(),
 	            'title' => $_helper->__('Cash On Delivery'),
