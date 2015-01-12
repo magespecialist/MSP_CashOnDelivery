@@ -1,0 +1,29 @@
+1.0.0
+Initial release
+
+1.1.0
+New features:
+- COD amounts can now include or exclude taxes
+- taxation class could be selected in tax configuration
+- tax amount for COD fee is calculated in tax total
+- new option in backend to display the COD fee including, excluding tax or both
+- added a description field before the COD fee on checkout
+
+1.2.0
+New features:
+- new option to show COD fee including or excluding taxes on order total row
+
+1.2.1
+Corrected recursion bug
+
+1.2.2
+Corrected backend COD display
+
+1.2.3
+Corrected tax calculation error when are present multiple tax rates   
+
+1.2.4
+Bugfix for tax calculation with empty cart
+
+1.2.5
+Bugfix for tax calculation for backend created orders

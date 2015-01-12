@@ -1,0 +1,301 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * IDEALIAGroup srl
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@idealiagroup.com so we can send you a copy immediately.
+ *
+ * @category   MSP
+ * @package    MSP_CashOnDelivery
+ * @copyright  Copyright (c) 2014 IDEALIAGroup srl (http://www.idealiagroup.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+	<modules>
+		<MSP_CashOnDelivery>
+			<version>1.2.5</version>
+		</MSP_CashOnDelivery>
+	</modules>
+
+	<global>
+		<helpers>
+			<msp_cashondelivery>
+				<class>MSP_CashOnDelivery_Helper</class>
+			</msp_cashondelivery>
+		</helpers>
+
+		<blocks>
+			<msp_cashondelivery>
+				<class>MSP_CashOnDelivery_Block</class>
+			</msp_cashondelivery>
+		</blocks>
+
+		<models>
+			<msp_cashondelivery>
+				<class>MSP_CashOnDelivery_Model</class>
+				<resourceModel>msp_cashondelivery_mysql4</resourceModel>
+			</msp_cashondelivery>
+
+			<msp_cashondelivery_mysql4>
+				<class>MSP_CashOnDelivery_Model_Mysql4</class>
+				<entities>
+					<local>
+						<table>msp_cashondelivery_local</table>
+					</local>
+					<foreign>
+						<table>msp_cashondelivery_foreign</table>
+					</foreign>
+				</entities>
+			</msp_cashondelivery_mysql4>
+		</models>
+
+		<resources>
+			<msp_cashondelivery_setup>
+				<setup>
+					<module>MSP_CashOnDelivery</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</msp_cashondelivery_setup>
+
+			<msp_cashondelivery_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</msp_cashondelivery_write>
+
+			<msp_cashondelivery_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</msp_cashondelivery_read>
+		</resources>
+
+		<sales>
+			<quote>
+				<totals>
+					<msp_cashondelivery>
+						<class>msp_cashondelivery/quote_total</class>
+						<after>tax</after>
+						<before>grand_total</before>
+					</msp_cashondelivery>
+					<msp_cashondelivery_tax>
+						<class>msp_cashondelivery/quote_tax</class>
+						<after>tax</after>
+						<before>grand_total</before>
+					</msp_cashondelivery_tax>
+				</totals>
+			</quote>
+			<order>
+				<totals>
+					<msp_cashondelivery>
+						<class>msp_cashondelivery/quote_total</class>
+						<after>tax</after>
+						<before>grand_total</before>
+					</msp_cashondelivery>
+					<msp_cashondelivery_tax>
+						<class>msp_cashondelivery/quote_tax</class>
+						<after>tax</after>
+						<before>grand_total</before>
+					</msp_cashondelivery_tax>
+				</totals>
+			</order>
+			<order_invoice>
+                <totals>
+                    <msp_cashondelivery>
+                       <class>msp_cashondelivery/order_total</class>
+						<after>tax</after>
+						<before>grand_total</before>
+                    </msp_cashondelivery>
+                </totals>
+            </order_invoice>           
+            <order_creditmemo>
+                <totals>
+                    <msp_cashondelivery>
+                       <class>msp_cashondelivery/creditmemo_total</class>
+						<after>tax</after>
+						<before>grand_total</before>
+                    </msp_cashondelivery>
+ 					<msp_cashondelivery_tax>
+						<class>msp_cashondelivery/creditmemo_tax</class>
+						<after>tax</after>
+						<before>grand_total</before>
+					</msp_cashondelivery_tax>
+               </totals>
+            </order_creditmemo>
+			<totals_sort>
+			    <msp_cashondelivery>15</msp_cashondelivery>
+			</totals_sort>
+		</sales>
+		
+		<fieldsets>
+			<sales_convert_quote>
+                <msp_cashondelivery><to_order>*</to_order></msp_cashondelivery>
+                <msp_base_cashondelivery><to_order>*</to_order></msp_base_cashondelivery>			
+                <msp_base_cashondelivery_incl_tax><to_order>*</to_order></msp_base_cashondelivery_incl_tax>
+                <msp_cashondelivery_incl_tax><to_order>*</to_order></msp_cashondelivery_incl_tax>			
+			</sales_convert_quote>
+			<sales_convert_order>
+                <msp_cashondelivery><to_quote>*</to_quote></msp_cashondelivery>
+                <msp_base_cashondelivery><to_quote>*</to_quote></msp_base_cashondelivery>			
+                <msp_base_cashondelivery_incl_tax><to_quote>*</to_quote></msp_base_cashondelivery_incl_tax>
+                <msp_cashondelivery_incl_tax><to_quote>*</to_quote></msp_cashondelivery_incl_tax>			
+			</sales_convert_order>
+			<sales_convert_order_address>
+                <msp_cashondelivery><to_quote_address>*</to_quote_address></msp_cashondelivery>
+                <msp_base_cashondelivery><to_quote_address>*</to_quote_address></msp_base_cashondelivery>			
+                <msp_base_cashondelivery_incl_tax><to_quote>*</to_quote></msp_base_cashondelivery_incl_tax>
+                <msp_cashondelivery_incl_tax><to_quote>*</to_quote></msp_cashondelivery_incl_tax>			
+			</sales_convert_order_address>
+            <sales_convert_quote_address>
+                <msp_cashondelivery><to_quote>*</to_quote><to_order>*</to_order></msp_cashondelivery>
+                <msp_base_cashondelivery><to_quote>*</to_quote><to_order>*</to_order></msp_base_cashondelivery>
+                <msp_base_cashondelivery_incl_tax><to_quote>*</to_quote></msp_base_cashondelivery_incl_tax>
+                <msp_cashondelivery_incl_tax><to_quote>*</to_quote></msp_cashondelivery_incl_tax>			
+            </sales_convert_quote_address>
+        </fieldsets>
+        
+        <pdf>
+			<totals>
+				<msp_cashondelivery translate="title">
+					<title>Cash On Delivery</title>
+					<source_field>msp_cashondelivery</source_field>
+					<model>msp_cashondelivery/order_pdf_total_default</model>
+					<font_size>7</font_size>
+					<display_zero>0</display_zero>
+					<sort_order>251</sort_order>
+				</msp_cashondelivery>
+			</totals>
+		</pdf>
+	</global>
+
+	<adminhtml>
+		<translate>
+			<modules>
+				<msp_cashondelivery>
+					<files>
+						<default>MSP_CashOnDelivery.csv</default>
+					</files>
+				</msp_cashondelivery>
+			</modules>
+		</translate>
+		<menu>
+			<sales>
+				<children>
+					<msp_cashondelivery translate="title" module="msp_cashondelivery">
+						<title>Cash on delivery prices</title>
+						<sort_order>1000</sort_order>
+						<children>
+							<msp_cashondelivery_local translate="title" module="msp_cashondelivery">
+								<title>Local destinations</title>
+								<action>adminhtml/cashondelivery_local</action>
+								<sort_order>10</sort_order>
+							</msp_cashondelivery_local>
+							<msp_cashondelivery_foreign translate="title" module="msp_cashondelivery">
+								<title>Foreign destinations</title>
+								<action>adminhtml/cashondelivery_foreign</action>
+								<sort_order>20</sort_order>
+							</msp_cashondelivery_foreign>
+						</children>
+                    </msp_cashondelivery>
+				</children>
+			</sales>
+        </menu>		
+		<layout>
+			<updates>
+				<msp_cashondelivery>
+					<file>msp_cashondelivery.xml</file>
+				</msp_cashondelivery>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<msp_cashondelivery>
+					<files>
+						<default>MSP_CashOnDelivery.csv</default>
+					</files>
+				</msp_cashondelivery>
+			</modules>
+		</translate>
+	</adminhtml>
+
+	<frontend>
+		<layout>
+			<updates>
+				<msp_cashondelivery>
+					<file>msp_cashondelivery.xml</file>
+				</msp_cashondelivery>
+			</updates>
+		</layout>
+		<translate>
+			<modules>            
+				<msp_cashondelivery>                  
+					<files>           
+						<default>MSP_CashOnDelivery.csv</default>                
+					</files>
+				</msp_cashondelivery>
+			</modules>
+		</translate>
+	</frontend>
+	    
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <msp_cashondelivery before="Mage_Adminhtml">MSP_CashOnDelivery_Adminhtml</msp_cashondelivery>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+	<default>
+		<msp_cashondelivery>
+			<general>
+				<enabled>1</enabled>
+			</general>
+		</msp_cashondelivery>
+		<payment>
+			<msp_cashondelivery>
+				<active>1</active>
+				<model>msp_cashondelivery/cashondelivery</model>
+				<order_status>pending</order_status>
+				<title>Cash on delivery</title>
+				<payment_action>authorize</payment_action>
+				<allowspecific>0</allowspecific>
+				<specificcountry>IT</specificcountry>
+				<calc_including_shipping>0</calc_including_shipping>
+				<calc_including_taxes>1</calc_including_taxes>
+			</msp_cashondelivery>
+		</payment>
+		<tax>
+			<classes>
+				<msp_cashondelivery_taxclass></msp_cashondelivery_taxclass>
+			</classes>
+			<calculation>
+				<msp_cashondelivery_includes_tax>1</msp_cashondelivery_includes_tax>
+			</calculation>
+			<display>
+				<msp_cashondelivery>2</msp_cashondelivery>
+			</display>
+		</tax>
+		<sales>
+			<totals_sort>
+				<msp_cashondelivery>1000</msp_cashondelivery>
+				<msp_cashondelivery_tax>1001</msp_cashondelivery_tax>
+			</totals_sort>
+		</sales>
+	</default>
+	
+</config>
