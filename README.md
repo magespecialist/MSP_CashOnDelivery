@@ -1,4 +1,5 @@
 # MSP CashOnDelivery Magento extension
+==================
 
 MSP CashOnDelivery is a Magento 1.x extension that adds a new payment method to your store. 
  You can configure fees based on order amount, different fees for local and foreign destinations.
@@ -14,3 +15,33 @@ http://www.magespecialist.it/en/msp-cashondelivery.html
 # Dependency notice
 Be sure to install MSP_Common magento extension **before** MSP CashOnDelivery or your store could not work properly.
 You can install it via Magento Connect here: http://www.magentocommerce.com/magento-connect/msp-common.html
+
+# Stable version
+
+1.2.5
+
+# MAGENTO Installation
+
+### via [modman](https://github.com/colinmollenhour/modman):
+<pre>
+modman clone https://github.com/magespecialist/MSP_CashOnDelivery
+</pre>
+
+### via [composer](https://getcomposer.org/download/)
+Add to your composer.json file this:
+<pre>
+{
+    ...
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*",
+        "magespecialist/cashondelivery": "1.2.5"
+    },
+    ....
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/magespecialist/MSP_CashOnDelivery"
+        }
+    ],
+    .....
+}</pre>
