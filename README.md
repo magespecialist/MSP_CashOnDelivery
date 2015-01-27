@@ -35,7 +35,7 @@ Add to your composer.json file this:
     ...
     "require": {
         "magento-hackathon/magento-composer-installer": "*",
-        "magespecialist/cashondelivery": "1.2.5"
+        "magespecialist/msp_cashondelivery": "1.2.5"
     },
     ....
     "repositories": [
