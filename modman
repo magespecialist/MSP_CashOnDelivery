@@ -1,0 +1,7 @@
+app/code/community/MSP/CashOnDelivery   app/code/community/MSP/CashOnDelivery
+app/design/adminhtml/default/default/layout/msp_cashondelivery.xml  app/design/adminhtml/default/default/layout/msp_cashondelivery.xml
+app/design/adminhtml/default/default/template/msp_cashondelivery    app/design/adminhtml/default/default/template/msp_cashondelivery
+app/design/frontend/base/default/layout/msp_cashondelivery.xml  app/design/frontend/base/default/layout/msp_cashondelivery.xml
+app/design/frontend/base/default/template/msp_cashondelivery/form.phtml app/design/frontend/base/default/template/msp_cashondelivery/form.phtml
+app/etc/modules/MSP_CashOnDelivery.xml  app/etc/modules/MSP_CashOnDelivery.xml
+app/locale/it_IT/MSP_CashOnDelivery.csv app/locale/it_IT/MSP_CashOnDelivery.csv

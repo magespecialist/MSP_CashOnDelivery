@@ -1,0 +1,16 @@
+{
+    "name": "magespecialist/msp_cashondelivery",
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "description": "Magento extension to add a ready-to-use Cash-On-Delivery payment gateway for your store",
+    "homepage": "https://github.com/magespecialist/MSP_CashOnDelivery",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors":[
+        {
+            "name":"MageSpecialist",
+            "email":"info@magespecialist.it"
+        }
+    ]
+}
