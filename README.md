@@ -41,7 +41,7 @@ Add to your composer.json file this:
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:magemindcom/MSP_Common.git"
+            "url": "git@github.com:magespecialist/MSP_CashOnDelivery.git"
         }
     ],
     .....
