@@ -20,6 +20,7 @@
 class MSP_CashOnDelivery_Model_Order_Pdf_Total_Default extends Mage_Sales_Model_Order_Pdf_Total_Default
 {
 	public function getTotalsForDisplay(){
+		$_helper = Mage::helper('msp_cashondelivery');
 		$amount = $this->getOrder()->getMspCashondelivery();
 		$fontSize = $this->getFontSize() ? $this->getFontSize() : 7;
 		if(floatval($amount)){
@@ -28,7 +29,7 @@ class MSP_CashOnDelivery_Model_Order_Pdf_Total_Default extends Mage_Sales_Model_
 				$discount = $this->getAmountPrefix().$discount;
 			}
 			$totals = array(array(
-					'label' => 'Cash On Delivery',
+					'label' => $_helper->__('Cash On Delivery'),
 					'amount' => $amount,
 					'font_size' => $fontSize,
 			)
