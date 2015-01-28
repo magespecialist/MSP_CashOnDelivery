@@ -15,6 +15,7 @@ http://www.magespecialist.it/en/msp-cashondelivery.html
 # Dependency notice
 Be sure to install MSP_Common magento extension **before** MSP CashOnDelivery or your store could not work properly.
 You can install it via Magento Connect here: http://www.magentocommerce.com/magento-connect/msp-common.html
+(Ignore this dependency if you use composer to install the extension)
 
 # Stable version
 
@@ -34,13 +35,13 @@ Add to your composer.json file this:
     ...
     "require": {
         "magento-hackathon/magento-composer-installer": "*",
-        "magespecialist/cashondelivery": "1.2.5"
+        "magespecialist/msp_cashondelivery": "1.2.5"
     },
     ....
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/magespecialist/MSP_CashOnDelivery"
+            "url": "git@github.com:magemindcom/MSP_Common.git"
         }
     ],
     .....

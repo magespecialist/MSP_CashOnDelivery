@@ -5,8 +5,15 @@
     "description": "Magento extension to add a ready-to-use Cash-On-Delivery payment gateway for your store",
     "homepage": "https://github.com/magespecialist/MSP_CashOnDelivery",
     "require": {
-        "magento-hackathon/magento-composer-installer": "*"
+        "magento-hackathon/magento-composer-installer": "*",
+        "magespecialist/msp_common": "*"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:magespecialist/MSP_Common.git"
+        }
+    ],
     "authors":[
         {
             "name":"MageSpecialist",
