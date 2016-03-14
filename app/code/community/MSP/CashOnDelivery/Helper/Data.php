@@ -35,7 +35,8 @@ class MSP_CashOnDelivery_Helper_Data extends Mage_Core_Helper_Abstract
 	const XML_PATH_COD_INCL_TAX = 'tax/calculation/msp_cashondelivery_includes_tax';
 	const XML_PATH_COD_DISPLAY_MODE = 'tax/display/msp_cashondelivery';
 	const XML_PATH_COD_TOTALROW_DISPLAY_MODE = 'tax/display/msp_cashondelivery_total';
-	
+	const XML_PATH_MIN_EXTRA_FEE = 'payment/msp_cashondelivery/min_extra_fee';
+
 	protected $_rate = null;
 
 	protected function getCodPriceDisplayType($store = null)
@@ -191,5 +192,16 @@ class MSP_CashOnDelivery_Helper_Data extends Mage_Core_Helper_Abstract
 		$rate = $this->getRate();
 		
 		return $amountExclTax * ($rate/100);
+	}
+
+	/**
+	 * Get minimum extra fee in system configuration
+	 *
+	 * @param int $store
+	 * @return float
+	 */
+	public function getMinExtraFee($store = null)
+	{
+		return (float)Mage::getStoreConfig(self::XML_PATH_MIN_EXTRA_FEE, $store);
 	}
 }

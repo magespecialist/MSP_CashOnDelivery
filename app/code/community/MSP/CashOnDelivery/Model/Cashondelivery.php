@@ -65,8 +65,8 @@ class MSP_CashOnDelivery_Model_Cashondelivery extends Mage_Payment_Model_Method_
 		$fixedFee = $applyRule->getFixedFee();
 		$percentFee = (float)$applyRule->getPercentFee();
 				
-		// controlla se il valore inserito  incluso o escluso tasse.
-		// Se  incluso deve scorporarle
+		// controlla se il valore inserito ï¿½ incluso o escluso tasse.
+		// Se ï¿½ incluso deve scorporarle
 		if ($_helper->getCodPriceInclTax() && (!$forTotalRow || !$_helper->displayCodTotalRowIncludingTax()))
 		{
 			$standardFixedFee = $_helper->excludeTax($standardFixedFee);
@@ -74,6 +74,11 @@ class MSP_CashOnDelivery_Model_Cashondelivery extends Mage_Payment_Model_Method_
 		}
 
 		$extraFee = $standardFixedFee + $fixedFee + $percentFee * $_subTotal /100;
+
+		// Check Extra Fee Minimum amount
+		$_min_extra_fee = $_helper->getMinExtraFee();
+		if($extraFee < $_min_extra_fee)
+			$extraFee = $_min_extra_fee;
 
 		return $extraFee;
 	}
