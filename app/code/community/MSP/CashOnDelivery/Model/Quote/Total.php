@@ -24,6 +24,12 @@ class MSP_CashOnDelivery_Model_Quote_Total extends Mage_Sales_Model_Quote_Addres
 
 	public function collect(Mage_Sales_Model_Quote_Address $address)
 	{
+		$paymentMethod = $address->getQuote()->getPayment()->getMethodInstance();
+
+		if ($paymentMethod->getCode() != 'msp_cashondelivery') {
+		    return $this;
+		}
+
 		$_helper = Mage::helper('msp_cashondelivery');
 		if (!$_helper->getSession()->getQuoteId()) return $this;
 				
