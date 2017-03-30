@@ -24,13 +24,12 @@ class MSP_CashOnDelivery_Model_Quote_Total extends Mage_Sales_Model_Quote_Addres
 
 	public function collect(Mage_Sales_Model_Quote_Address $address)
 	{
-        $paymentMethod = $address->getQuote()->getPayment()->getMethodInstance();
+		$paymentMethod = $address->getQuote()->getPayment()->getMethodInstance();
 
-        if ($paymentMethod->getCode() != 'msp_cashondelivery') {
-            return $this;
-        }
+		if ($paymentMethod->getCode() != 'msp_cashondelivery') {
+		    return $this;
+		}
 
-		Mage::log(__FILE__."-".__LINE__."-".__FUNCTION__." // ");
 		$_helper = Mage::helper('msp_cashondelivery');
 		if (!$_helper->getSession()->getQuoteId()) return $this;
 				
@@ -78,7 +77,6 @@ class MSP_CashOnDelivery_Model_Quote_Total extends Mage_Sales_Model_Quote_Addres
 
 	public function fetch(Mage_Sales_Model_Quote_Address $address)
 	{
-		Mage::log(__FILE__."-".__LINE__."-".__FUNCTION__." // ");
 		$_helper = Mage::helper('msp_cashondelivery');
 		if (!$_helper->getSession()->getQuoteId()) return $this;
 		
