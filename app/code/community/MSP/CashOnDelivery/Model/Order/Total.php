@@ -23,13 +23,17 @@ class MSP_CashOnDelivery_Model_Order_Total extends Mage_Sales_Model_Order_Invoic
 	public function collect(Mage_Sales_Model_Order_Invoice $invoice)
 	{
 		$order = $invoice->getOrder();
+        	$payment = $order->getPayment();
+        	$method = $payment->getMethodInstance()->getCode();
+		if( $method == 'msp_cashondelivery' ) {
 
-		$amount = $order->getMspCashondelivery();
-		$baseAmount = $order->getMspBaseCashondelivery();
-				
-		$invoice->setGrandTotal($invoice->getGrandTotal() + $amount);
-		$invoice->setBaseGrandTotal($invoice->getBaseGrandTotal() + $baseAmount);
-		
+		    $amount = $order->getMspCashondelivery();
+		    $baseAmount = $order->getMspBaseCashondelivery();
+
+		    $invoice->setGrandTotal($invoice->getGrandTotal() + $amount);
+		    $invoice->setBaseGrandTotal($invoice->getBaseGrandTotal() + $baseAmount);
+		}
+
 		return $this;
 	}
 }
